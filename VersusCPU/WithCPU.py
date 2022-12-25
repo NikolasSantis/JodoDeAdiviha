@@ -1,7 +1,8 @@
-from time import sleep
 from os import system
 from random import randint
-def WithCPU():
+def VsCPU():
+    '''Modo de jogo onde a CPU tenta adivinha um número de 0 a 10 que o usuário
+    escolher'''
     system("clear")
     print('--'*20)
     print(f'{"JOGO DE ADIVINHAÇÃO".center(40)}')
@@ -64,11 +65,39 @@ def WithCPU():
     print()
     print('--'*20)
     print(f'Números de tentativas do computador: {tentativas}')
-    print(f'Número escolhido pelo usuário: {numJogador}')
-    print('=='*20)
-    print(f'{"ENCERRANDO":>24}', end='')
-    for c in range(0, 3):
-        print('.', end='')
-        sleep(1)
-    print()
-    print('=='*20)
+    print(f'Número escolhido pelo usuário: {numJogador}', end='')
+
+def CpuVsPlayer():
+    system("clear")
+    print('--'*20)
+    print(f'{"JOGO DE ADIVINHAÇÃO".center(40)}')
+    print('--'*20)
+    numCpu = randint(0, 10)
+    print('O Computador escolheu um número de 0 a 10')
+    print('--'*20)
+    numerosJogador = []
+    while True:
+        while True:
+            try:
+                numJogador = int(input('Que número é esse? '))
+            except (ValueError, TypeError):
+                print('Erro! Digite números inteiros')
+            else:
+                if numJogador  > 10 or numJogador < 0:
+                    print('Erro! Valores de 0 a 10 apenas')
+                else:
+                    break
+        numerosJogador.append(numJogador)
+        if numJogador == numCpu:
+            break
+        else:
+            print('Não é esse o número, tente novamente')
+    print('--'*20)
+    print(f'{f"PARABÉNS O NNÚMERO ERA {numCpu}".center(40)}')
+    print('--'*20)
+    print(f'Total de números palpitados foi: {len(numerosJogador)}')
+    print('Os números palpitados foram: ', end='')
+    c = 0
+    while c < len(numerosJogador):
+        print(f'{numerosJogador[c]} ', end='')
+        c += 1

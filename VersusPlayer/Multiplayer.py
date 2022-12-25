@@ -52,6 +52,6 @@ def Player2(numJogador1):
     while c < len(numerosJogador2):
         print(f'{numerosJogador2[c]} ', end='')
         c += 1
-    print(f'\nO número de tentativas foi: {tentativas}')
+
                 
         
